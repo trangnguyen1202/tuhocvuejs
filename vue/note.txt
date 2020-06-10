@@ -1,0 +1,19 @@
+Cài đặt vue js
+vuejs template webpack
+https://github.com/vuejs-templates/webpack
+	$ npm install -g vue-cli
+	$ vue init webpack my-project
+	$ cd my-project
+	$ npm install
+	$ npm run dev // chạy ứng dụng
+	
+Cấu trúc của thư mục 
+file packege.json: 
+	nơi để khai báo thư viện module ở bên ngoài sb project.
+	dependencies
+	devDependencies:
+Môi trường:
+1. Development
+	- Babel
+		-> ES6 phiên bản mới của ES5
+2. Production

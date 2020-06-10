@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<header id="myhead">
+		{{message}}
+		{{showmess}}
+		<h2>{{say("Trang")}}</h2>
+		<p>{{true ? 'dung':'sai'}}</p>
+		<p>Counter {{ counter }}</p>
+		<button v-on:click="handClick($event,5)">click</button>
+		<p>Name: {{name}}</p>
+		<form action=""  v-on:submit.prevent="handSubmint">
+			name: <input type="text" name="name" v-model="name"><br>
+			email: <input type="text" name="mail"><br>
+			<input type="submit">
+		</form>
+		<!-- // vd ve rang buoc class -->
+		<div class="demo" v-bind:class=" objClass " v-bind:style=" { backgroundImage: 'url('+ bg +')'} ">
+			xin chao
+		</div>
+		<!-- dieu kien trong vue -js -->
+		<ul>
+			<li v-on:click=" changevalue($event,'login') ">Dang nhap</li>
+			<li v-on:click=" changevalue($event,'register') ">Dang ky</li>
+		</ul>
+		<div class="login" v-if=" gtriselect === 'login'">
+			<h2>lognin</h2>
+		</div>
+		<div class="register" v-else-if=" gtriselect === 'register' ">
+			<h2>register</h2>
+		</div>
+		<!-- ds bai viet for vs mang -->
+		<div class="listnew" >
+			<div class="new-item" v-for=" (gtr,index)  in listNews " v-bin:key="index ">
+				<h2>{{ gtr.title }}</h2>
+				<p>mo ts</p>
+			</div>
+			
+		</div>
+		<ul>
+			<li v-for=" u in  getuseractive "> {{ u.email }}</li>
+		</ul>
+		<!-- for vs object -->
+		<ul>
+			<li v-for=" (value,key,index) in score ">{{key}} : {{value}}</li>
+		</ul>
+	</header>
+	<!-- khi ban su dung su kien tren box 2 thi box 1 cung se dc kich hoat su kien
+		event box se ngan chan su kien loan toa len  doi tuong cha
+	 -->
+	<div id="box1">
+		<div id="box2"></div>
+	</div>
+	<!-- lay ra danh sach user co tragn thai active=ture -->
+	
+	<footer>
+		
+	</footer>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="main.js"></script>
+</body>
+</html>

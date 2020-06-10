@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/2fd4d694d3.js"></script>
+
+</head>
+<body>
+    <section id="baitap" class="container">
+        <div class="row">
+            <div class="col-md-6"  >
+                <img   v-bind:src=" hienthianhlon " alt="" class="img-fluid" >
+            </div>
+            <img src="" alt="">
+            <div class="col-md-6">
+                <div class="tomtat">
+                    <div>
+                        <h2>{{ name }}</h2>
+                        <p>{{ ncc }}</p>
+                        <h2>{{ showsaleprice }}</h2>
+                        <strike>{{ showprice }}</strike>
+                        <p><strong>Mã sản phẩm: </strong>AB12</p>
+                        <p><strong>Chất lượng: </strong>100% COTTON</p>
+                    </div>
+                    <div v-for=" (value,index) in listsp " v-if="  index == ( gtriselect )">
+                        <p><strong>Màu sắc: </strong>{{ value.color }}</p>
+                        <p v-if=" value.qt <= 0 "><strong>Hết hàng</strong></p>
+                        <p v-if=" value.qt > 0 "><strong>Còn lại </strong>  {{ value.qt }}</p>
+                    </div>
+
+                    <div class="cha">
+                       <input type="number" name="slg" value="1" class="form-control" style="    width: 10%; height: 41px;" min="1" id="gtrthem" v-model="gtrthem">
+                        <button class="btn btn-info" id="addtocat" v-on:click=" addproducttoCat($event,listsp[gtriselect].qt) ">Thêm vào giỏ hàng</button>
+                    </div>
+                    
+                </div>
+                <div class="listanh">
+                    <ul class="list-inline">
+                        <li v-for="(pd , chiso) in listsp" v-bind:class="classActive(chiso)">
+                            <a href="javascript:void(0)" v-on:click=" changgtriselect(chiso) ">
+                                <img v-bind:src=" pd.ha "  alt="" class="anh ">
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="thongtinsanpham"  v-html=" intro2 ">
+                    <!-- v-html -->
+                   
+                    <!-- {{ intro }} -->
+                </div>
+            </div>
+        </div>
+        <div class="giohang">
+            <i class="fa fa-cart-plus" aria-hidden="true"> {{ catnuber }}</i>
+        </div>
+    </section> 
+    <style>
+        .cha{
+            position: relative;
+        }
+        #addtocat{
+            position: absolute;
+            left: 10%;
+            height: 42px;
+            bottom: 0;
+        }
+        .anh{
+            width: 100px;
+        }
+        .listanh{
+            margin-top: 50px;
+        }
+        .giohang{
+            background: red;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            color: white;
+            border-radius: 50%;
+            line-height: 3;
+            position: fixed;
+            z-index: 100;
+            top: 40%;
+            right: 50%;
+        }
+        .active{
+            border: 1px solid red;
+        }
+    </style>    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="bt1.js"></script>
+</body>
+</html>

@@ -18,8 +18,66 @@ file packege.json:
 	nơi để khai báo thư viện module ở bên ngoài sb project.
 	dependencies
 	devDependencies:
+Mỗi thành phần trong web sẽ tương ứng với mỗi components -> tương ứng với 1 file .vue
 Môi trường:
 1. Development
 	- Babel
 		-> ES6 phiên bản mới của ES5
 2. Production
+
+I. Cách xây dựng một component mới
+- App.vue được coi là 1 trang index.html
+- bạn có thể tạo ra rất nhiều component mới và import vào app.vue
+- trong app.vue bạn sẽ import các component 
+- cấu trúc cơ bản của 1 component
+<template>
+    <h2>{{ gt }}</h2>
+</template>
+<script>
+export default {
+    name:'CompFooter',
+    data () {
+    return {
+      gt:'Footer'
+    }
+  }
+}
+</script>
+<style>
+
+</style>
+- trong mỗi components thành phần phải có phần export default khai báo như 1 đối tượng vue
+      export default {
+ 	name: 'HelloWorld',
+  	data () {
+    	  return {
+     	    msg: 'Hello Vuejs'
+    	  }
+  	}
+      }
+- tại file app.vue chúng ta sử dụng như sau để active các component
+    import HelloWorld from './components/HelloWorld'
+    export default {
+      name: 'App',
+      components: {
+         HelloWorld
+      }
+    }
+
+II. Cài đặt mã nguồn vầ tổ chức component lồng nhau
+- khi chia sẻ code giữa các máy tính khác nhau sẽ không gửi thư mục node_module
+- tại máy khi nhận code của máy khác tại đây bạn sẽ chạy lệnh npm install thì nó sẽ sinh ra thư mục node_module mới cho bạn
+III. Cách truyền dữ liệu giữa các components
+1. Tìm hiểu Props Down trong vue
+tại app co data là title: "Xin chao vue"
+muốn chuyền từ app vào các component con thì sử dụng props
+props là dl truyền từ cha vào con
+sử dụng cú pháp giống với thuộc tính -> ràng buộc thuộc tính -> sử dụng v-bind
+cú pháp v-bind:<tenthuoctinh>="<ten_thuoc_tinh_data_cha"
+
+tại component con xử dụng dl từ component cha truyền vào
+=> sử dụng props: {<tenthuoctinh>:kieudl}
+kiểu dl để bắt ràng buộc dl khi truyền vào
+https://vuejs.org/v2/guide/components-props.html#Prop-Casing-camelCase-vs-kebab-case
+
+truyền giá trị mặc định khi sử dụng props trường hợp không có giá trị ở component cha truyền vào
